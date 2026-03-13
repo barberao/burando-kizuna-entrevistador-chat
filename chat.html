@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrevista - Burando Kizuna</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="chat.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+    }
+    #n8n-chat {
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="n8n-chat"></div>
+
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('sessionId') || 'no-session-id';
+
+   // 1. DETECTAR IDIOMA DEL NAVEGADOR
+  /* const userLang = navigator.language || navigator.userLanguage; */
+  
+  // 2. DEFINIR EL MENSAJE INICIAL SEGÚN EL IDIOMA
+  /* const welcomeMessage = userLang.startsWith('es') 
+    ? '¡Hola! Estoy listo para empezar la entrevista. ¿Comenzamos?' 
+    : 'Hello! I am ready to start the interview. Shall we begin?'; */
+
+    createChat({
+      webhookUrl: 'https://n8n.srv1014576.hstgr.cloud/webhook/3b357d9f-7dab-467b-a834-baede8033466/chat?sessionId=${sessionId}',
+      target: '#n8n-chat',
+      mode: 'fullscreen',
+      metadata: {
+        sessionIdFromUrl: sessionId,
+      },
+      showWelcomeScreen: true,
+      loadPreviousSession: false,
+      initialMessages: [
+        '¡Hola! Estoy listo para empezar la entrevista. ¿Comenzamos?'
+      ], 
+      // 3. USAR LA VARIABLE DINÁMICA
+      /* initialMessages: [welcomeMessage], */
+      i18n: {
+        en: {
+          title: 'Burando Kizuna',
+          subtitle: 'Responde a las preguntas que el chat te irá haciendo.',
+          footer: '© 2026 Burando Kizuna - Todos los derechos reservados',
+          getStarted: 'Empezar entrevista', // Este es el texto del botón
+          inputPlaceholder: 'Escribe tu respuesta...'
+        }
+        /* ,en: { // CAMBIADO de 'en' a 'es' para que coincida con tu HTML
+          title: 'Burando Kizuna',
+          subtitle: 'Reply to the questions of the chat.',
+          footer: '',
+          getStarted: 'Start',
+          inputPlaceholder: 'Reply here...'
+        } */
+      }
+    });
+  </script>
+</body>
+</html>
