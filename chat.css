@@ -3,7 +3,8 @@
   --chat--color--primary: #e74266;
   --chat--color--primary-shade-50: #db4061;
   --chat--color--primary--shade-100: #cf3c5c;
-  --chat--color--secondary: #20b69e;
+  /* --chat--color--secondary: #20b69e; */
+  --chat--color--secondary: #3e34f2;
   --chat--color-secondary-shade-50: #1ca08a;
   --chat--color-white: #fff;
   --chat--color-light: #f2f4f8;
@@ -19,7 +20,7 @@
   --chat--spacing: 1rem;
   --chat--border-radius: 0.25rem;
   --chat--transition-duration: 0.15s;
-  --chat--font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --chat--font-family: Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 
   /* Window Dimensions */
   --chat--window--width: 400px;
@@ -34,8 +35,8 @@
   /* Header Styles */
   --chat--header-height: auto;
   --chat--header--padding: var(--chat--spacing);
-  --chat--header--background: var(--chat--color-dark);
-  --chat--header--color: var(--chat--color-light);
+  --chat--header--background: var(--chat--color-white);
+  --chat--header--color: var(--chat--color-dark);
   --chat--header--border-top: none;
   --chat--header--border-bottom: none;
   --chat--header--border-left: none;
@@ -128,18 +129,29 @@
 
 /* You can override any class styles, too. Right-click inspect in Chat UI to find class to override. */
 /* Añade el logo arriba del título */
-.chat-header::before {
+/* .chat-header::before {
   content: "";
   display: block;
-  /* width: 908px;  
-  height: 198px; */
   width:  600px;  
-  height: 200px; 
-  background-image: url('https://www.burandokizuna.com/hubfs/Logo%20Burando%20Kizuna/logo-Burando-blak.png'); /* Pon el link directo a tu logo */
+  height: 100px;
+  background-image: url('https://www.burandokizuna.com/hubfs/Logo%20Burando%20Kizuna/logo-Burando-blue.png'); 
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin-bottom: 0px; /* Espacio entre el logo y el texto */
+  margin-bottom: 0px; 
+} */
+.chat-header::before {
+  content: "";
+  display: block;
+  /* CAMBIO CLAVE: Usamos un ancho porcentual y un máximo */
+  width: 90% !important;      /* Se adapta al ancho de la pantalla */
+  max-width: 450px !important; /* No se verá gigante en ordenadores */
+  height: 80px !important;     /* Altura un poco más ajustada */
+  background-image: url('https://www.burandokizuna.com/hubfs/Logo%20Burando%20Kizuna/logo-Burando-blue.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto 10px auto !important; /* Centrado con un poco de aire abajo */
 }
 /* Icono en la pantalla de bienvenida */
 .chat-welcome-screen::before {
@@ -189,16 +201,51 @@
   font-weight: 600;
   text-transform: uppercase; /* Opcional: para darle un toque más profesional */
   letter-spacing: 0.5px;
+  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 .chat-footer {
   display: flex !important;
   justify-content: flex-end !important; /* Alineación a la derecha */
-  font-size: 0.7rem !important;          /* Fuente más pequeña */
+  /*font-size: 0.7rem !important;   */       /* Fuente más pequeña */
   color: #9da3ae !important;             /* Gris suave */
   opacity: 0.8 !important;               /* Transparencia para que sea sutil */
   padding: 0.5rem 1.5rem !important;     /* Espaciado para que no toque los bordes */
   text-align: right !important;
-  }
+}
 .chat-powered-by {
   display:none;
 }
+#progress-container {
+  width: 100%;
+  height: 8px;
+  background-color: #d2d4d9; /* Gris claro de fondo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+#progress-bar {
+  width: 0%; 
+  height: 100%;
+  /* background-color: var(--chat--color--secondary); */ /* Tu verde corporativo */
+  background-color: #00ffcc !important;
+  transition: width 0.5s ease-in-out; 
+  box-shadow: 0 0 10px rgba(62, 52, 242, 0.5);
+}
+/* Ajustes específicos para móviles */
+@media (max-width: 480px) {
+  :root {
+    --chat--window--width: 100% !important; /* Ocupa todo el ancho */
+    --chat--window--bottom: 0 !important;
+    --chat--window--right: 0 !important;
+  }
+
+  .chat-header::before {
+    height: 60px !important; /* Logo un poco más pequeño en móviles */
+  }
+
+  .chat-message {
+    max-width: 85% !important; /* Burbujas de chat más anchas en móvil */
+  }
+}
+/* Fin del archivo. No añadas ninguna } más aquí */
