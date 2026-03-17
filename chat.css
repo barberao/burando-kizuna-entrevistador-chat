@@ -246,4 +246,7 @@
     max-width: 85% !important; /* Burbujas de chat más anchas en móvil */
   }
 }
+#n8n-chat, .chat-header, .chat-message {
+  font-family: 'Poppins', sans-serif !important;
+}
 /* Fin del archivo. No añadas ninguna } más aquí */
