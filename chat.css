@@ -175,7 +175,7 @@
   align-items: center;    /* Centra ambos horizontalmente */
   justify-content: center; /* Centra ambos verticalmente */
   text-align: center;
-  font-family: Poppins, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: Poppins, "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 .chat-heading {
   display:none;
@@ -201,7 +201,7 @@
   font-weight: 600;
   text-transform: uppercase; /* Opcional: para darle un toque más profesional */
   letter-spacing: 0.5px;
-  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  /*font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif */
 }
 .chat-footer {
   display: flex !important;
